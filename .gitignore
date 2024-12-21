@@ -1,0 +1,38 @@
+# Arquivos de configuração
+config/config.php
+.env
+
+# Arquivos de IDE/Editor
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Logs e arquivos temporários
+*.log
+tmp/
+temp/
+logs/
+
+# Dependências e bibliotecas
+vendor/
+node_modules/
+
+# Arquivos de cache
+*.cache
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+
+# Arquivos de sessão
+sessions/
+
+# Arquivos de upload
+uploads/*
+!uploads/.gitkeep 
