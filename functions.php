@@ -1,27 +1,21 @@
 <?php
-
-/**
- * Estabelece conexão com o banco de dados
- * @return mysqli Conexão com o banco de dados
- */
-function getConnection() {
-    // Carregar configurações
-    require_once 'config/config.php';
-    
-    try {
-        $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+if (!function_exists('getConnection')) {
+    function getConnection() {
+        static $mysqli = null;
         
-        if ($mysqli->connect_error) {
-            throw new Exception('Erro de conexão com o banco de dados: ' . $mysqli->connect_error);
+        if ($mysqli === null) {
+            require_once __DIR__ . '/config.php';
+            
+            $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+            
+            if ($mysqli->connect_error) {
+                throw new Exception('Erro ao conectar ao banco de dados: ' . $mysqli->connect_error);
+            }
+            
+            $mysqli->set_charset('utf8mb4');
         }
         
-        // Configurar charset
-        $mysqli->set_charset('utf8mb4');
-        
         return $mysqli;
-    } catch (Exception $e) {
-        error_log($e->getMessage());
-        throw new Exception('Erro ao conectar com o banco de dados. Por favor, verifique as configurações.');
     }
 }
 
