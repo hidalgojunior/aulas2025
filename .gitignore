@@ -36,3 +36,6 @@ sessions/
 # Arquivos de upload
 uploads/*
 !uploads/.gitkeep 
+
+# Arquivos de sistema
+Sistema.txt
